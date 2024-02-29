@@ -186,12 +186,7 @@ extension KKChartZoomingView {
     var points: [KKPointChart] = .init()
     let date: Date = .now
     
-    let config = KKChartConfig(
-      colorIndicator: colorIdicator,
-      colorLineChart: colorChart,
-      chartStyle: .init(colors: [colorChart.opacity(0.5), .clear],
-                        startPoint: .top,
-                        endPoint: .bottom))
+    let config = KKChartConfig(colorIndicator: colorIdicator)
     
     for i in 0...count {
       points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 3600)),
