@@ -10,6 +10,11 @@
 		8E60A1892B90629F00900F18 /* KKSwiftChart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E60A1802B90629E00900F18 /* KKSwiftChart.framework */; };
 		8E60A18E2B90629F00900F18 /* KKSwiftChartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A18D2B90629F00900F18 /* KKSwiftChartTests.swift */; };
 		8E60A18F2B90629F00900F18 /* KKSwiftChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E60A1832B90629E00900F18 /* KKSwiftChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E60A1AB2B90664900900F18 /* KKChartModelPrototol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1AA2B90664900900F18 /* KKChartModelPrototol.swift */; };
+		8E60A1AF2B9066E900900F18 /* KKChartConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1AE2B9066E900900F18 /* KKChartConfig.swift */; };
+		8E60A1B22B9067CE00900F18 /* KKPointChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1B12B9067CE00900F18 /* KKPointChart.swift */; };
+		8E60A1B62B9068C200900F18 /* KKChartZooming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1B52B9068C200900F18 /* KKChartZooming.swift */; };
+		8E60A1B82B9068D000900F18 /* KKChartZoomingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1B72B9068D000900F18 /* KKChartZoomingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +32,11 @@
 		8E60A1832B90629E00900F18 /* KKSwiftChart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKSwiftChart.h; sourceTree = "<group>"; };
 		8E60A1882B90629E00900F18 /* KKSwiftChartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KKSwiftChartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E60A18D2B90629F00900F18 /* KKSwiftChartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSwiftChartTests.swift; sourceTree = "<group>"; };
+		8E60A1AA2B90664900900F18 /* KKChartModelPrototol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartModelPrototol.swift; sourceTree = "<group>"; };
+		8E60A1AE2B9066E900900F18 /* KKChartConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartConfig.swift; sourceTree = "<group>"; };
+		8E60A1B12B9067CE00900F18 /* KKPointChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPointChart.swift; sourceTree = "<group>"; };
+		8E60A1B52B9068C200900F18 /* KKChartZooming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartZooming.swift; sourceTree = "<group>"; };
+		8E60A1B72B9068D000900F18 /* KKChartZoomingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartZoomingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +61,9 @@
 		8E60A1762B90629E00900F18 = {
 			isa = PBXGroup;
 			children = (
+				8E60A1B02B90676000900F18 /* Definition */,
+				8E60A1B42B90689500900F18 /* KKChartIndicator */,
+				8E60A1B32B90688300900F18 /* KKChartZooming */,
 				8E60A1822B90629E00900F18 /* KKSwiftChart */,
 				8E60A18C2B90629F00900F18 /* KKSwiftChartTests */,
 				8E60A1812B90629E00900F18 /* Products */,
@@ -80,6 +93,32 @@
 				8E60A18D2B90629F00900F18 /* KKSwiftChartTests.swift */,
 			);
 			path = KKSwiftChartTests;
+			sourceTree = "<group>";
+		};
+		8E60A1B02B90676000900F18 /* Definition */ = {
+			isa = PBXGroup;
+			children = (
+				8E60A1AA2B90664900900F18 /* KKChartModelPrototol.swift */,
+				8E60A1AE2B9066E900900F18 /* KKChartConfig.swift */,
+				8E60A1B12B9067CE00900F18 /* KKPointChart.swift */,
+			);
+			name = Definition;
+			sourceTree = "<group>";
+		};
+		8E60A1B32B90688300900F18 /* KKChartZooming */ = {
+			isa = PBXGroup;
+			children = (
+				8E60A1B52B9068C200900F18 /* KKChartZooming.swift */,
+				8E60A1B72B9068D000900F18 /* KKChartZoomingView.swift */,
+			);
+			name = KKChartZooming;
+			sourceTree = "<group>";
+		};
+		8E60A1B42B90689500900F18 /* KKChartIndicator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = KKChartIndicator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +183,7 @@
 				TargetAttributes = {
 					8E60A17F2B90629E00900F18 = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
 					};
 					8E60A1872B90629E00900F18 = {
 						CreatedOnToolsVersion = 15.2;
@@ -191,6 +231,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E60A1AF2B9066E900900F18 /* KKChartConfig.swift in Sources */,
+				8E60A1B82B9068D000900F18 /* KKChartZoomingView.swift in Sources */,
+				8E60A1B22B9067CE00900F18 /* KKPointChart.swift in Sources */,
+				8E60A1B62B9068C200900F18 /* KKChartZooming.swift in Sources */,
+				8E60A1AB2B90664900900F18 /* KKChartModelPrototol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +386,7 @@
 		8E60A1932B90629F00900F18 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -364,6 +410,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -372,6 +419,7 @@
 		8E60A1942B90629F00900F18 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -403,6 +451,7 @@
 		8E60A1962B90629F00900F18 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HNSKUL3WR3;
@@ -419,6 +468,7 @@
 		8E60A1972B90629F00900F18 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HNSKUL3WR3;
