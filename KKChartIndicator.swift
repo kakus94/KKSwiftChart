@@ -110,7 +110,9 @@ extension KKChartIndicator {
       points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 3600)),
                           y: Double.random(in: 10...35),
                           seria: "Seria2", color: .red))
-      
+    }
+    
+    for i in 0...count {      
       points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 3600)),
                           y: Double.random(in: 10...35),
                           seria: "Seria1", color: .green))

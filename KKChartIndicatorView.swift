@@ -32,8 +32,8 @@ struct KKChartIndicatorView: View {
                 .contentShape(Rectangle())
                 .gesture(gesturePressDetect(proxy: chartProxy, geometry: geo))
                 .overlay {
+                  
                   if let selectedElement, model.getCount() > selectedElement {
-                    
                     let count =  CGFloat(model.getCount())
                     
                     let (relativeXPosition,relativeYPosition) = getRelativePosition(proxy: chartProxy, geo: geo)

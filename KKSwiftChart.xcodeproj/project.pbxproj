@@ -17,6 +17,7 @@
 		8E60A1B82B9068D000900F18 /* KKChartZoomingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1B72B9068D000900F18 /* KKChartZoomingView.swift */; };
 		8E60A1BA2B90790E00900F18 /* KKChartIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1B92B90790E00900F18 /* KKChartIndicator.swift */; };
 		8E60A1BC2B90791A00900F18 /* KKChartIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1BB2B90791A00900F18 /* KKChartIndicatorView.swift */; };
+		8E60A1F12B91FD6300900F18 /* KKChartSearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		8E60A1B72B9068D000900F18 /* KKChartZoomingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartZoomingView.swift; sourceTree = "<group>"; };
 		8E60A1B92B90790E00900F18 /* KKChartIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartIndicator.swift; sourceTree = "<group>"; };
 		8E60A1BB2B90791A00900F18 /* KKChartIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartIndicatorView.swift; sourceTree = "<group>"; };
+		8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartSearchProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				8E60A1AA2B90664900900F18 /* KKChartModelPrototol.swift */,
 				8E60A1AE2B9066E900900F18 /* KKChartConfig.swift */,
 				8E60A1B12B9067CE00900F18 /* KKPointChart.swift */,
+				8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */,
 			);
 			name = Definition;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				8E60A1B22B9067CE00900F18 /* KKPointChart.swift in Sources */,
 				8E60A1B62B9068C200900F18 /* KKChartZooming.swift in Sources */,
 				8E60A1BA2B90790E00900F18 /* KKChartIndicator.swift in Sources */,
+				8E60A1F12B91FD6300900F18 /* KKChartSearchProtocol.swift in Sources */,
 				8E60A1AB2B90664900900F18 /* KKChartModelPrototol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
