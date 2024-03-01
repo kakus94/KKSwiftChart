@@ -24,7 +24,7 @@ protocol KKChartModelPrototol {
   var domainY: ClosedRange<Double> { get set }
   var domainX: ClosedRange<Date> { get set }
   
-  var seria: KeyValuePairs<String, Color> { get set }
+  var seria: Dictionary<String, Color> { get set }
   
   var includeFillChart: Bool { get set }
   
@@ -78,13 +78,38 @@ protocol KKChartModelPrototol {
   /// - Parameter margin: Procentowy odstep
   mutating func setDomainY(margin: Double)
   
+  func seriaDomain() -> [String]
+  func seriaRange() -> [Color]
 }
 
 
 extension KKChartModelPrototol {
   
+  func seriaDomain() -> [String] {
+    seria.map({ $0.key })
+  }
+  
+  func seriaRange() -> [Color] {
+    seria.map({ $0.value })
+  }
+ 
+  mutating func setSeries() {
+    
+    var dict: Dictionary<String,Color> = .init()
+    values.forEach { kKPointChart in
+      dict[kKPointChart.seria] = kKPointChart.color
+    }
+    self.seria = dict    
+  }
+  
+  mutating func sortValue() {
+    self.values = self.values.sorted(by: {$0.seria < $1.seria})
+  }
+  
   @MainActor
   mutating func render() {
+    sortValue()
+    setSeries()
       let render = ImageRenderer(content: viewToRender)
       render.scale = UIScreen.main.scale
       self.chartView = render.content

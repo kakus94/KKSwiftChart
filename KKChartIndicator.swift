@@ -13,7 +13,7 @@ import Charts
 struct KKChartIndicator: KKChartModelPrototol {
   var includeFillChart: Bool
   
-  var seria: KeyValuePairs<String, Color> = [:]
+  internal var seria: Dictionary<String, Color> = [:]
   
   var domainY: ClosedRange<Double> = 0...10
   var domainX: ClosedRange<Date> = Date.now.addingTimeInterval(-3600)...Date.now
@@ -52,17 +52,19 @@ struct KKChartIndicator: KKChartModelPrototol {
             .interpolationMethod(.cardinal)
             .lineStyle(.init(lineWidth: 1))
             .foregroundStyle(point.color)
-            //            .foregroundStyle(by: .value("Electrode", "Temperatura w buforze CWU"))
             .foregroundStyle(by: .value("Seria", point.seria))
             
           }
         }
         .chartLegend(position: .top, alignment: .leading, spacing: 15)
         .chartLegend(.visible)
-      
-        .chartYScale(domain: (min ?? 0)...(max ?? 10))
+        
+        .chartYScale(domain: domainY)
         .chartYAxis {
-          AxisMarks(position: .leading, values: [min ?? 0, max ?? 10].generateValue(format: "%.1f", count: 5)) { _ in
+          AxisMarks(position: .leading,
+                    values: .automatic(desiredCount: 5,
+                                       roundLowerBound: nil,
+                                       roundUpperBound: nil)) { _ in
             AxisGridLine(centered: true, stroke: StrokeStyle(dash: [1,2]))
               .foregroundStyle(config.gridY.colorGrid)
             AxisTick(centered: true, stroke: StrokeStyle(lineWidth: 2))
@@ -71,6 +73,8 @@ struct KKChartIndicator: KKChartModelPrototol {
               .foregroundStyle(config.gridY.colorLabel)
           }
         }
+        
+        .chartXScale(domain: domainX)
         .chartXAxis {
           AxisMarks(values: .automatic) { _ in
             AxisGridLine(centered: true, stroke: StrokeStyle(dash: [1, 2]))
@@ -81,6 +85,8 @@ struct KKChartIndicator: KKChartModelPrototol {
               .foregroundStyle(config.gridX.colorLabel)
           }
         }
+        .chartForegroundStyleScale(domain: seriaDomain(), 
+                                   range: seriaRange())
     )
     
   }
@@ -103,7 +109,11 @@ extension KKChartIndicator {
     for i in 0...count {
       points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 3600)),
                           y: Double.random(in: 10...35),
-                          seria: "Seria", color: .green))
+                          seria: "Seria2", color: .red))
+      
+      points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 3600)),
+                          y: Double.random(in: 10...35),
+                          seria: "Seria1", color: .green))
     }
     
     model.setValues(points)

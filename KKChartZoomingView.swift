@@ -172,7 +172,7 @@ extension KKChartZoomingView {
 
 
 #Preview {
-  KKChartZoomingView(model: KKChartZoomingView.mock(100, colorChart: .green))
+  KKChartZoomingView(model: KKChartZoomingView.mock(20))
     .frame(height: 350)
     .padding(.horizontal)
 }
@@ -180,9 +180,9 @@ extension KKChartZoomingView {
 
 //MARK: Mock
 extension KKChartZoomingView {
-  static func mock(_ count: Int = 30, colorChart: Color = .blue, colorIdicator: Color = .blue) -> KKChartZooming {
+  static func mock(_ count: Int = 30, colorIdicator: Color = .blue) -> KKChartZooming {
     
-    var model = KKChartZooming(includeFillChart: false, seria: ["Seria1": .blue, "Seria2": .purple])
+    var model = KKChartZooming(includeFillChart: true)
     var points: [KKPointChart] = .init()
     let date: Date = .now
     
@@ -191,13 +191,13 @@ extension KKChartZoomingView {
     for i in 0...count {
       points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 3600)),
                           y: Double.random(in: 10...35),
-                          seria: "Seria1", color: model.seria[0].value))
+                          seria: "Seria1", color: .cyan))
     }
     
     for i in 0...count {
       points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 3600)),
                           y: Double.random(in: 10...35),
-                          seria: "Seria2", color: model.seria[1].value))
+                          seria: "Seria2", color: .orange))
     }
     
     model.setValues(points)

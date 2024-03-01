@@ -14,7 +14,7 @@ struct KKChartZooming: KKChartModelPrototol {
   
   var includeFillChart: Bool
   
-  var seria: KeyValuePairs<String, Color>
+  var seria: Dictionary<String, Color> = .init()
   
   var values: [KKPointChart] = .init()
   
@@ -26,6 +26,7 @@ struct KKChartZooming: KKChartModelPrototol {
   
   var domainY: ClosedRange = 0.0...10.0
   var domainX: ClosedRange = Date.now...Date.now
+  
   
   //MARK: Render
   
@@ -55,7 +56,7 @@ struct KKChartZooming: KKChartModelPrototol {
             .interpolationMethod(.cardinal)
             .lineStyle(.init(lineWidth: 1))
             .foregroundStyle(point.color)
-            //            .foregroundStyle(by: .value("Electrode", "Temperatura w buforze CWU"))
+//            .foregroundStyle(by: .value("Electrode", "Temperatura w buforze CWU"))
             .foregroundStyle(by: .value("Seria", point.seria))
             
           }
@@ -89,9 +90,13 @@ struct KKChartZooming: KKChartModelPrototol {
               .foregroundStyle(config.gridX.colorLabel)
           }
         }
-        .chartForegroundStyleScale(self.seria)
+      //        .chartForegroundStyleScale(self.seria)
+        .chartForegroundStyleScale(
+          domain: seriaDomain(),
+          range: seriaRange()
         )
-      }
+    )
+  }
   
   
   @MainActor
