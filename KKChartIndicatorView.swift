@@ -81,20 +81,21 @@ struct KKChartIndicatorView: View {
     }
     .animation(.default, value: selectedElement)
     .task {
-      self.model.render()
+      model.setDomainX()
+      model.setDomainY(margin: 0.1)
+      model.render()
     }
-    //      .tileBackground_v2
   }
   
   fileprivate func getChartFrame(proxy: ChartProxy, geo: GeometryProxy) -> (Double, Double) {
-    let chartWidth  = geo[proxy.plotAreaFrame].width
-    let chartHeight = geo[proxy.plotAreaFrame].height
+    let chartWidth  = geo[proxy.plotFrame!].width
+    let chartHeight = geo[proxy.plotFrame!].height
     return (chartWidth, chartHeight)
   }
   
   fileprivate func getRelativePosition(proxy: ChartProxy, geo: GeometryProxy) -> (Double, Double) {
-    let x  = geo[proxy.plotAreaFrame].origin.x
-    let y = geo[proxy.plotAreaFrame].origin.y
+    let x  = geo[proxy.plotFrame!].origin.x
+    let y = geo[proxy.plotFrame!].origin.y
     return (x, y)
   }
   
@@ -113,8 +114,8 @@ struct KKChartIndicatorView: View {
   }
   
   fileprivate func find(location: CGPoint, proxy: ChartProxy, geometry: GeometryProxy) -> Int? {
-    let relativeXPosition = location.x - geometry[proxy.plotAreaFrame].origin.x
-    let resolution = proxy.plotAreaSize.width / CGFloat(model.getCount())
+    let relativeXPosition = location.x - geometry[proxy.plotFrame!].origin.x
+    let resolution = proxy.plotSize.width / CGFloat(model.getCount())
     
     let indexDouble = (relativeXPosition / resolution)
     let index = Int(indexDouble.rounded())

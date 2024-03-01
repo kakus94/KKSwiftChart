@@ -42,7 +42,7 @@ struct KKChartIndicator: KKChartModelPrototol {
                              startPoint: .top,
                              endPoint: .bottom)
             )
-            .foregroundStyle(by: .value("Seria", point.seria))
+//            .foregroundStyle(by: .value("Seria", point.seria))
           }
             
             
@@ -53,16 +53,19 @@ struct KKChartIndicator: KKChartModelPrototol {
             .lineStyle(.init(lineWidth: 1))
             .foregroundStyle(point.color)
             //            .foregroundStyle(by: .value("Electrode", "Temperatura w buforze CWU"))
-            .foregroundStyle(by: .value("Seria", point.seria))
+//            .foregroundStyle(by: .value("Seria", point.seria))
             
           }
         }
         .chartLegend(position: .top, alignment: .leading, spacing: 15)
         .chartLegend(.visible)
-      
-        .chartYScale(domain: (min ?? 0)...(max ?? 10))
+        
+        .chartYScale(domain: domainY)
         .chartYAxis {
-          AxisMarks(position: .leading, values: [min ?? 0, max ?? 10].generateValue(format: "%.1f", count: 5)) { _ in
+          AxisMarks(position: .leading,
+                    values: .automatic(desiredCount: 5,
+                                       roundLowerBound: nil,
+                                       roundUpperBound: nil)) { _ in
             AxisGridLine(centered: true, stroke: StrokeStyle(dash: [1,2]))
               .foregroundStyle(config.gridY.colorGrid)
             AxisTick(centered: true, stroke: StrokeStyle(lineWidth: 2))
@@ -71,6 +74,8 @@ struct KKChartIndicator: KKChartModelPrototol {
               .foregroundStyle(config.gridY.colorLabel)
           }
         }
+        
+        .chartXScale(domain: domainX)
         .chartXAxis {
           AxisMarks(values: .automatic) { _ in
             AxisGridLine(centered: true, stroke: StrokeStyle(dash: [1, 2]))
@@ -81,6 +86,7 @@ struct KKChartIndicator: KKChartModelPrototol {
               .foregroundStyle(config.gridX.colorLabel)
           }
         }
+        .chartForegroundStyleScale(self.seria) 
     )
     
   }
@@ -94,7 +100,7 @@ struct KKChartIndicator: KKChartModelPrototol {
 extension KKChartIndicator {
   static func mock(_ count: Int = 30, colorChart: Color = .blue, colorIdicator: Color = .blue) -> KKChartIndicator {
     
-    var model = KKChartIndicator(includeFillChart: true)
+    var model = KKChartIndicator(includeFillChart: true, seria: ["Seria1": .green])
     var points: [KKPointChart] = .init()
     let date: Date = .now
     
