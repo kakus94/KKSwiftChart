@@ -42,7 +42,7 @@ struct KKChartIndicator: KKChartModelPrototol {
                              startPoint: .top,
                              endPoint: .bottom)
             )
-            .foregroundStyle(by: .value("Seria", point.seria))
+//            .foregroundStyle(by: .value("Seria", point.seria))
           }
             
             
@@ -100,7 +100,7 @@ struct KKChartIndicator: KKChartModelPrototol {
 extension KKChartIndicator {
   static func mock(_ count: Int = 30, colorChart: Color = .blue, colorIdicator: Color = .blue) -> KKChartIndicator {
     
-    var model = KKChartIndicator(includeFillChart: true)
+    var model = KKChartIndicator(includeFillChart: true, seria: ["Seria1": .green])
     var points: [KKPointChart] = .init()
     let date: Date = .now
     
