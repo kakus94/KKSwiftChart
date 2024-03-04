@@ -10,33 +10,67 @@ import SwiftUI
 import Charts
 
 protocol KKChartDelegate {
-  
+  func setSelectedElement(result: [KKChartPositionIndicator?]?)
+  func getValues() -> [KKPointChart]
+  func getSeries() -> Dictionary<String, Color>
 }
+
+
 
 
 
 protocol KKChartSearchProtocol {
   
-  var selectedElement: Date? { get set }
   var domainX: ClosedRange<Date>   { get set }
-  var domainY: ClosedRange<Double> { get set}
-  
-  
+  var domainY: ClosedRange<Double> { get set }
+  var delegate: KKChartDelegate? { get set }
   func resulutionY() -> Double
-  func gesturePressDetect(proxy: ChartProxy, geometry: GeometryProxy) -> any Gesture
+  func gesturePressDetect(geometry: GeometryProxy) -> _EndedGesture<_ChangedGesture<DragGesture>>
 }
 
 
 extension KKChartSearchProtocol {
   
-  func find(location: CGPoint, proxy: ChartProxy, geometry: GeometryProxy) {
-    let (chartWidth,chartHeight) = getChartFrame(proxy: proxy, geo: geometry)
-    let (relX, relY) = getRelativePosition(proxy: proxy, geo: geometry)
+  func findPoint(_ date: Date?, width: CGFloat, height: CGFloat) {
+    if let date, let delegate {
+      let valueSorted = delegate.getValues().sorted(by: { $0.x < $1.x })
+      let series = delegate.getSeries()
+      
+      var result: [KKChartPositionIndicator?] = []
+      
+      for (key,color) in series  {
+        
+        let x = valueSorted.last { poinChart in
+          if  poinChart.seria == key && poinChart.x < date {
+            return true
+          }
+          return false
+        }
+        
+        if let x {
+          
+          let posX = (x.x.timeIntervalSince1970 - domainX.lowerBound.timeIntervalSince1970) / (domainX.upperBound.timeIntervalSince1970 - domainX.lowerBound.timeIntervalSince1970) * width
+          let posY = x.y / (domainY.upperBound - domainY.lowerBound) * height
+          
+          result.append(.init(result: x, posX: posX, posY: posY, date: date))
+        }
+        
+      }
+      
+      
+      delegate.setSelectedElement(result: result)
+    }
     
-    let rangeY = domainY.upperBound - domainY.lowerBound
+  }
+  
+  func find(location: CGPoint, geometry: GeometryProxy) {
     
-    print("")
+    let (relX, relY) = getRelativePosition(geo: geometry)
+    let rangeY = domainX.upperBound.timeIntervalSince1970 - domainX.lowerBound.timeIntervalSince1970
+    let timeInterval = ((location.x / relX) * rangeY) + domainX.lowerBound.timeIntervalSince1970
+    let selectData = Date(timeIntervalSince1970: TimeInterval(timeInterval))
     
+    findPoint(selectData, width: relX, height: relY)
   }
   
   func resulutionY() -> Double {
@@ -44,15 +78,13 @@ extension KKChartSearchProtocol {
     return resY
   }
   
-  func gesturePressDetect(proxy: ChartProxy, geometry: GeometryProxy) -> any Gesture {
+  func gesturePressDetect(geometry: GeometryProxy) -> _EndedGesture<_ChangedGesture<DragGesture>> {
     DragGesture(minimumDistance: 0)
       .onChanged { value in
-//        selectedElement = find(location: value.location,
-//                               proxy: proxy,
-//                               geometry: geometry)
+       find(location: value.location, geometry: geometry)
       }
       .onEnded { _ in
-//        selectedElement = nil
+        delegate?.setSelectedElement(result: nil)
       }
   }
   
@@ -63,9 +95,9 @@ extension KKChartSearchProtocol {
     return (chartWidth, chartHeight)
   }
   
-  func getRelativePosition(proxy: ChartProxy, geo: GeometryProxy) -> (Double, Double) {
-    let x  = geo[proxy.plotFrame!].origin.x
-    let y = geo[proxy.plotFrame!].origin.y
+  func getRelativePosition( geo: GeometryProxy) -> (Double, Double) {
+    let x  = geo.size.width
+    let y = geo.size.height
     return (x, y)
   }
 
@@ -76,15 +108,23 @@ extension KKChartSearchProtocol {
 
 
 
-protocol KKChartPositionIndicatorProtocol {
+public struct KKChartPositionIndicator: Equatable {
+  public static func == (lhs: KKChartPositionIndicator, rhs: KKChartPositionIndicator) -> Bool {
+    lhs.posX != rhs.posX || lhs.posY != rhs.posY || lhs.date != rhs.date
+  }
   
+  public var result: KKPointChart
+  public var posX: CGFloat
+  public var posY: CGFloat
+  public var date: Date
   
-  
-  
+  public init(result: KKPointChart, posX: CGFloat, posY: CGFloat, date: Date) {
+    self.result = result
+    self.posX = posX
+    self.posY = posY
+    self.date = date
+  }
 }
 
 
-extension KKChartPositionIndicatorProtocol {
-
-}
  

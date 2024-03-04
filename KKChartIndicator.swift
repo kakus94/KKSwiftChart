@@ -26,6 +26,8 @@ public struct KKChartIndicator: KKChartModelPrototol {
   public var min: Double?
   public var max: Double?
   
+  var delegate: KKChartDelegate?
+  
   public init(fillChart: Bool) {
     self.includeFillChart = fillChart
   }
@@ -97,6 +99,11 @@ public struct KKChartIndicator: KKChartModelPrototol {
   
 }
 
+
+
+extension KKChartIndicator: KKChartSearchProtocol {
+  
+}
 
 
 
