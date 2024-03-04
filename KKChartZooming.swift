@@ -10,27 +10,30 @@ import SwiftUI
 import Charts
 
 
-struct KKChartZooming: KKChartModelPrototol {
+public struct KKChartZooming: KKChartModelPrototol {
   
-  var includeFillChart: Bool
+  public var includeFillChart: Bool
   
-  var seria: Dictionary<String, Color> = .init()
+  public var seria: Dictionary<String, Color> = .init()
   
-  var values: [KKPointChart] = .init()
+  public var values: [KKPointChart] = .init()
   
-  var config: KKChartConfig = .init()
-  var chartView: (any View)?
+  public var config: KKChartConfig = .init()
+  public var chartView: (any View)?
   
-  var min: Double?
-  var max: Double?
+  public var min: Double?
+  public var max: Double?
   
-  var domainY: ClosedRange = 0.0...10.0
-  var domainX: ClosedRange = Date.now...Date.now
+  public var domainY: ClosedRange = 0.0...10.0
+  public var domainX: ClosedRange = Date.now...Date.now
   
+  public init(fillChart: Bool) {
+    self.includeFillChart = fillChart
+  }
   
   //MARK: Render
   
-  var viewToRender: AnyView {
+  public var viewToRender: AnyView {
     AnyView(
       Chart {
         ForEach(self.values, id: \.id) { point in
@@ -56,7 +59,6 @@ struct KKChartZooming: KKChartModelPrototol {
             .interpolationMethod(.cardinal)
             .lineStyle(.init(lineWidth: 1))
             .foregroundStyle(point.color)
-//            .foregroundStyle(by: .value("Electrode", "Temperatura w buforze CWU"))
             .foregroundStyle(by: .value("Seria", point.seria))
             
           }

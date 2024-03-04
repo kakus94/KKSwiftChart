@@ -30,6 +30,12 @@ protocol KKChartSearchProtocol {
 extension KKChartSearchProtocol {
   
   func find(location: CGPoint, proxy: ChartProxy, geometry: GeometryProxy) {
+    let (chartWidth,chartHeight) = getChartFrame(proxy: proxy, geo: geometry)
+    let (relX, relY) = getRelativePosition(proxy: proxy, geo: geometry)
+    
+    let rangeY = domainY.upperBound - domainY.lowerBound
+    
+    print("")
     
   }
   

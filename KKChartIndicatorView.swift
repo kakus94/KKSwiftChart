@@ -9,18 +9,18 @@ import SwiftUI
 import Charts
 
 
-struct KKChartIndicatorView: View {
+public struct KKChartIndicatorView: View {
   
   @State var model: KKChartIndicator
   @Binding var selectedElement: Int?
   
-  init(model: KKChartIndicator,
+  public init(model: KKChartIndicator,
        selectedElement: Binding<Int?>) {
     self._model = State(wrappedValue: model)
     self._selectedElement = selectedElement
   }
   
-  var body: some View {
+  public var body: some View {
     VStack {
       if let chartView = model.chartView {
         AnyView(chartView)

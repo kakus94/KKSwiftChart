@@ -10,23 +10,27 @@ import SwiftUI
 import Charts
 
 //MARK: ChartModel
-struct KKChartIndicator: KKChartModelPrototol {
-  var includeFillChart: Bool
+public struct KKChartIndicator: KKChartModelPrototol {
+  public var includeFillChart: Bool
   
-  internal var seria: Dictionary<String, Color> = [:]
+  public var seria: Dictionary<String, Color> = [:]
   
-  var domainY: ClosedRange<Double> = 0...10
-  var domainX: ClosedRange<Date> = Date.now.addingTimeInterval(-3600)...Date.now
+  public var domainY: ClosedRange<Double> = 0...10
+  public var domainX: ClosedRange<Date> = Date.now.addingTimeInterval(-3600)...Date.now
   
-  var values: [KKPointChart] = .init()
+  public var values: [KKPointChart] = .init()
   
-  var config: KKChartConfig = . init()
-  var chartView: (any View)?
+  public var config: KKChartConfig = . init()
+  public var chartView: (any View)?
   
-  var min: Double?
-  var max: Double?
+  public var min: Double?
+  public var max: Double?
   
-  var viewToRender: AnyView {
+  public init(fillChart: Bool) {
+    self.includeFillChart = fillChart
+  }
+  
+  public var viewToRender: AnyView {
     AnyView(
       Chart {
         ForEach(self.values, id: \.id) { point in
@@ -42,7 +46,7 @@ struct KKChartIndicator: KKChartModelPrototol {
                              startPoint: .top,
                              endPoint: .bottom)
             )
-//            .foregroundStyle(by: .value("Seria", point.seria))
+            .foregroundStyle(by: .value("Seria", point.seria))
           }
             
             
@@ -98,9 +102,9 @@ struct KKChartIndicator: KKChartModelPrototol {
 
 //MARK: Mock
 extension KKChartIndicator {
-  static func mock(_ count: Int = 30, colorChart: Color = .blue, colorIdicator: Color = .blue) -> KKChartIndicator {
+  public static func mock(_ count: Int = 30, colorChart: Color = .blue, colorIdicator: Color = .blue) -> KKChartIndicator {
     
-    var model = KKChartIndicator(includeFillChart: true, seria: ["Seria1": .green])
+    var model = KKChartIndicator(fillChart: true)
     var points: [KKPointChart] = .init()
     let date: Date = .now
     

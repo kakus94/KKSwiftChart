@@ -85,15 +85,15 @@ protocol KKChartModelPrototol {
 
 extension KKChartModelPrototol {
   
-  func seriaDomain() -> [String] {
+  public func seriaDomain() -> [String] {
     seria.map({ $0.key })
   }
   
-  func seriaRange() -> [Color] {
+  public func seriaRange() -> [Color] {
     seria.map({ $0.value })
   }
  
-  mutating func setSeries() {
+  public mutating func setSeries() {
     
     var dict: Dictionary<String,Color> = .init()
     values.forEach { kKPointChart in
@@ -102,12 +102,12 @@ extension KKChartModelPrototol {
     self.seria = dict    
   }
   
-  mutating func sortValue() {
+  public mutating func sortValue() {
     self.values = self.values.sorted(by: {$0.seria < $1.seria})
   }
   
   @MainActor
-  mutating func render() {
+  public mutating func render() {
     sortValue()
     setSeries()
       let render = ImageRenderer(content: viewToRender)
@@ -115,7 +115,7 @@ extension KKChartModelPrototol {
       self.chartView = render.content
   }
     
-  func getMinMaxValue(values: [Double]) -> (Double?,Double?) {
+  public func getMinMaxValue(values: [Double]) -> (Double?,Double?) {
     let min = (values.min() ?? 0)
     let max = (values.max() ?? 10)
     
@@ -124,34 +124,34 @@ extension KKChartModelPrototol {
     return (min - rangePrecentStep, max + rangePrecentStep)
   }
     
-  mutating func setValues(_ values: [KKPointChart]) {
-    self.values = values.sorted(by: { $0.x < $1.x })
+  public mutating func setValues(_ values: [KKPointChart]) {
+    self.values = values
     let (minn,maxx) = getMinMaxValue(values: self.values.map{ $0.y })
     self.min = minn
     self.max = maxx
   }
     
-  mutating func setConfig(_ config: KKChartConfig) {
+  public mutating func setConfig(_ config: KKChartConfig) {
     self.config = config
   }
     
-  func getValueByIndex(by index: Int) -> Double {
+  public func getValueByIndex(by index: Int) -> Double {
     values[index].y
   }
     
-  func getCount() -> Int {
+  public func getCount() -> Int {
     values.count
   }
   
-  func getMax() -> Double {
+  public func getMax() -> Double {
     max ?? 10
   }
   
-  func getMin() -> Double {
+  public func getMin() -> Double {
     min ?? 0
   }
   
-  mutating func setDomainX(value1: Date, value2: Date) {
+  public mutating func setDomainX(value1: Date, value2: Date) {
     let x = [value1, value2]
     let orginalStartDate = self.values.map({ $0.x }).min()
     let orginalEndDate = self.values.map({ $0.x }).max()
@@ -170,12 +170,12 @@ extension KKChartModelPrototol {
     self.domainX = resultStart...resultEnd
   }
   
-  mutating func setDomainX() {
+  public  mutating func setDomainX() {
     let dates = values.map{ $0.x }
     setDomainX(value1: dates.max()!, value2: dates.min()!)
   }
   
-  mutating func setDomainY(value1: Double, value2: Double, margin: Double = 0) {
+  public mutating func setDomainY(value1: Double, value2: Double, margin: Double = 0) {
     
     let values = [value1, value2]
     let orginalMin = self.values.map({ $0.y }).min()
@@ -197,7 +197,7 @@ extension KKChartModelPrototol {
     self.domainY = (resultMin - toAdd)...(resultMax + toAdd)
   }
   
-  mutating func setDomainY(margin: Double = 0) {
+  public mutating func setDomainY(margin: Double = 0) {
     
     let mappingValue = values.map({ $0.y })
     

@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-struct KKChartZoomingView: View {
+public struct KKChartZoomingView: View {
   
   @State var model: KKChartZooming
   
@@ -17,7 +17,11 @@ struct KKChartZoomingView: View {
   @State private var revers: Bool = false
   @State private var show: Bool = false
   
-  var body: some View {
+ public init(model: KKChartZooming) {
+    self._model = State(wrappedValue: model)
+  }
+  
+  public  var body: some View {
     VStack {
       if let chartView = model.chartView {
         AnyView(chartView)
@@ -172,17 +176,17 @@ extension KKChartZoomingView {
 
 
 #Preview {
-  KKChartZoomingView(model: KKChartZoomingView.mock(20))
+  KKChartZoomingView(model: KKChartZooming.mock(20))
     .frame(height: 350)
     .padding(.horizontal)
 }
 
 
 //MARK: Mock
-extension KKChartZoomingView {
-  static func mock(_ count: Int = 30, colorIdicator: Color = .blue) -> KKChartZooming {
+extension KKChartZooming {
+  public static func mock(_ count: Int = 30, colorIdicator: Color = .blue) -> KKChartZooming {
     
-    var model = KKChartZooming(includeFillChart: true)
+    var model = KKChartZooming(fillChart: true)
     var points: [KKPointChart] = .init()
     let date: Date = .now
     
