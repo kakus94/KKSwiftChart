@@ -14,10 +14,14 @@ extension KKChartIndicatorView: KKChartDelegate {
       posX = nil
       return
     }
-    self.selectedDate = result
+    
+    selectedDate =  result
     posX = result.compactMap{ $0?.posX }.reduce(0, +) / 2
     
-    print("X -> \(result.compactMap({ $0?.posX ?? 0})) Y -> \(result.compactMap({ $0?.posY ?? 0}))")
+    if let first = result.first {
+      print(first.debugDescription)
+    }
+    
   }
   
   func getSeries() -> Dictionary<String, Color> {
@@ -34,14 +38,12 @@ extension KKChartIndicatorView: KKChartDelegate {
 public struct KKChartIndicatorView: View {
   
   @State var model: KKChartIndicator
-  @Binding var selectedDate: [KKChartPositionIndicator?]
+  @State var selectedDate: [KKChartPositionIndicator?] = []
   
   @State private var posX: CGFloat? = nil
   
-  public init(model: KKChartIndicator,
-       selectedElement: Binding<[KKChartPositionIndicator?]>) {
+  public init(model: KKChartIndicator) {
     self._model = State(wrappedValue: model)
-    self._selectedDate = selectedElement
   }
   
   public var body: some View {
@@ -67,6 +69,7 @@ public struct KKChartIndicatorView: View {
     }
   }
   
+
   func overlay() -> some View {
     GeometryReader { geo in
       ZStack {
@@ -75,26 +78,30 @@ public struct KKChartIndicatorView: View {
           .contentShape(Rectangle())
           .gesture(model.gesturePressDetect(geometry: geo))
           .overlay {
-            if let posX {
-              HStack(spacing: 0 ) {
-                Rectangle()
-                  .frame(width: 2)
-                  .frame(maxHeight: .infinity)
-                  .overlay{
-                    VStack(spacing: 0) {
-                      Circle()
-                        .frame(width: 5, height: 5, alignment: .center)
-                        .offset(y: -2)
-                        
-                      
-                      Spacer()
-                    }
-                  }
-                  .offset(x: posX, y: -4)
-//                  .padding(.bottom, ((posYs!.first ?? 0)!) / 2)
-                
-                
+            if let posX, let posYMax = selectedDate.compactMap({ $0?.posY }).max()  {
+              VStack(spacing: 0 ) {
                 Spacer()
+                HStack(spacing: 0 ) {                  
+                  Rectangle()
+                    .frame(width: 2, height: posYMax)
+  //                  .frame(maxHeight: .infinity)
+                  
+                    .overlay{
+                      VStack(spacing: 0) {
+                        Circle()
+                          .frame(width: 5, height: 5, alignment: .center)
+                          .offset(y: -2)
+                          
+                        
+                        Spacer()
+                      }
+                    }
+                    .offset(x: posX, y: -4)
+  //                  .padding(.bottom, ((posYs!.first ?? 0)!) / 2)
+                  
+                  
+                  Spacer()
+                }
               }
             }
           }
@@ -109,11 +116,11 @@ fileprivate struct MyView: View {
   @State var index: [KKChartPositionIndicator?] = []
   var body: some View {
     VStack {
-      KKChartIndicatorView(model: .mock(10), selectedElement: $index)
+      KKChartIndicatorView(model: .mock(10)/*, selectedElement: $index*/)
       .frame(height: 200)
       .padding()
       
-      KKChartIndicatorView(model: .mock(10,colorChart: .red,colorIdicator: .green), selectedElement: $index)
+      KKChartIndicatorView(model: .mock(10,colorChart: .red,colorIdicator: .green)/*, selectedElement: $index*/)
       .frame(height: 200)
       .padding()
     }

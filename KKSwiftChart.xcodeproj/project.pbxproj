@@ -18,6 +18,8 @@
 		8E60A1BA2B90790E00900F18 /* KKChartIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1B92B90790E00900F18 /* KKChartIndicator.swift */; };
 		8E60A1BC2B90791A00900F18 /* KKChartIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1BB2B90791A00900F18 /* KKChartIndicatorView.swift */; };
 		8E60A1F12B91FD6300900F18 /* KKChartSearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */; };
+		8EBDF3792B9706BE00B2A8E0 /* KKHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBDF3782B9706BE00B2A8E0 /* KKHelper.framework */; };
+		8EBDF37A2B9706BE00B2A8E0 /* KKHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBDF3782B9706BE00B2A8E0 /* KKHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,20 @@
 			remoteInfo = KKSwiftChart;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8EBDF37B2B9706BE00B2A8E0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8EBDF37A2B9706BE00B2A8E0 /* KKHelper.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8E60A1802B90629E00900F18 /* KKSwiftChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KKSwiftChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +59,7 @@
 		8E60A1B92B90790E00900F18 /* KKChartIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartIndicator.swift; sourceTree = "<group>"; };
 		8E60A1BB2B90791A00900F18 /* KKChartIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartIndicatorView.swift; sourceTree = "<group>"; };
 		8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartSearchProtocol.swift; sourceTree = "<group>"; };
+		8EBDF3782B9706BE00B2A8E0 /* KKHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KKHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EBDF3792B9706BE00B2A8E0 /* KKHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +91,7 @@
 				8E60A1822B90629E00900F18 /* KKSwiftChart */,
 				8E60A18C2B90629F00900F18 /* KKSwiftChartTests */,
 				8E60A1812B90629E00900F18 /* Products */,
+				8EBDF3772B9706BE00B2A8E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +149,14 @@
 			name = KKChartIndicator;
 			sourceTree = "<group>";
 		};
+		8EBDF3772B9706BE00B2A8E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8EBDF3782B9706BE00B2A8E0 /* KKHelper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -152,6 +179,7 @@
 				8E60A17C2B90629E00900F18 /* Sources */,
 				8E60A17D2B90629E00900F18 /* Frameworks */,
 				8E60A17E2B90629E00900F18 /* Resources */,
+				8EBDF37B2B9706BE00B2A8E0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -8,16 +8,13 @@
 import Foundation
 import SwiftUI
 import Charts
+import KKHelper
 
 protocol KKChartDelegate {
   func setSelectedElement(result: [KKChartPositionIndicator?]?)
   func getValues() -> [KKPointChart]
   func getSeries() -> Dictionary<String, Color>
 }
-
-
-
-
 
 protocol KKChartSearchProtocol {
   
@@ -38,7 +35,7 @@ extension KKChartSearchProtocol {
       
       var result: [KKChartPositionIndicator?] = []
       
-      for (key,color) in series  {
+      for (key,_) in series  {
         
         let x = valueSorted.last { poinChart in
           if  poinChart.seria == key && poinChart.x < date {
@@ -108,9 +105,12 @@ extension KKChartSearchProtocol {
 
 
 
-public struct KKChartPositionIndicator: Equatable {
+public struct KKChartPositionIndicator: Equatable, Identifiable, CustomDebugStringConvertible {
+  public var id = UUID().uuidString
+  
+  
   public static func == (lhs: KKChartPositionIndicator, rhs: KKChartPositionIndicator) -> Bool {
-    lhs.posX != rhs.posX || lhs.posY != rhs.posY || lhs.date != rhs.date
+    lhs.posX == rhs.posX || lhs.posY == rhs.posY || lhs.date == rhs.date
   }
   
   public var result: KKPointChart
@@ -124,6 +124,12 @@ public struct KKChartPositionIndicator: Equatable {
     self.posY = posY
     self.date = date
   }
+  
+  public var debugDescription: String {
+    "Result -> \(result.debugDescription) Position -> Date: \(date.format("dd HH:mm:ss")) X: \(posX) Y: \(posY) "
+     }
+  
+  
 }
 
 

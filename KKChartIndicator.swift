@@ -109,7 +109,7 @@ extension KKChartIndicator: KKChartSearchProtocol {
 
 //MARK: Mock
 extension KKChartIndicator {
-  public static func mock(_ count: Int = 30, colorChart: Color = .blue, colorIdicator: Color = .blue) -> KKChartIndicator {
+  public static func mock(_ count: Int = 15, colorChart: Color = .blue, colorIdicator: Color = .blue) -> KKChartIndicator {
     
     var model = KKChartIndicator(fillChart: true)
     var points: [KKPointChart] = .init()
@@ -118,16 +118,16 @@ extension KKChartIndicator {
     let config = KKChartConfig(colorIndicator: colorIdicator)
     
     for i in 0...count {
-      points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 3600)),
+      points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 60)),
                           y: Double.random(in: 10...35),
                           seria: "Seria2", color: .red))
     }
     
-    for i in 0...count {      
-      points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 3600)),
-                          y: Double.random(in: 10...35),
-                          seria: "Seria1", color: .green))
-    }
+//    for i in 0...count {      
+//      points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 3600)),
+//                          y: Double.random(in: 10...35),
+//                          seria: "Seria1", color: .green))
+//    }
     
     model.setValues(points)
     model.setConfig(config)
