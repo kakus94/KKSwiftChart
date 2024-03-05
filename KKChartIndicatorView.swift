@@ -10,13 +10,13 @@ import Charts
 
 extension KKChartIndicatorView: KKChartDelegate {
   func setSelectedElement(result: [KKChartPositionIndicator?]?) {
-    guard let result else { 
+    guard let result, !result.isEmpty else {
       posX = nil
       return
     }
     
     selectedDate =  result
-    posX = result.compactMap{ $0?.posX }.reduce(0, +) / 2
+    posX = result.compactMap{ $0?.posX }.reduce(0, +) / CGFloat(result.count)
     
     if let first = result.first {
       print(first.debugDescription)

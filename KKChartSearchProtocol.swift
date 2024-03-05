@@ -30,12 +30,14 @@ extension KKChartSearchProtocol {
   
   func findPoint(_ date: Date?, width: CGFloat, height: CGFloat) {
     if let date, let delegate {
+      
       let valueSorted = delegate.getValues().sorted(by: { $0.x < $1.x })
+      
       let series = delegate.getSeries()
       
       var result: [KKChartPositionIndicator?] = []
       
-      for (key,_) in series  {
+      for (key, _) in series  {
         
         let x = valueSorted.last { poinChart in
           if  poinChart.seria == key && poinChart.x < date {
@@ -47,13 +49,11 @@ extension KKChartSearchProtocol {
         if let x {
           
           let posX = (x.x.timeIntervalSince1970 - domainX.lowerBound.timeIntervalSince1970) / (domainX.upperBound.timeIntervalSince1970 - domainX.lowerBound.timeIntervalSince1970) * width
-          let posY = x.y / (domainY.upperBound - domainY.lowerBound) * height
+          let posY = (x.y - domainY.lowerBound) / (domainY.upperBound - domainY.lowerBound) * height
           
           result.append(.init(result: x, posX: posX, posY: posY, date: date))
         }
-        
       }
-      
       
       delegate.setSelectedElement(result: result)
     }
@@ -61,12 +61,10 @@ extension KKChartSearchProtocol {
   }
   
   func find(location: CGPoint, geometry: GeometryProxy) {
-    
     let (relX, relY) = getRelativePosition(geo: geometry)
-    let rangeY = domainX.upperBound.timeIntervalSince1970 - domainX.lowerBound.timeIntervalSince1970
-    let timeInterval = ((location.x / relX) * rangeY) + domainX.lowerBound.timeIntervalSince1970
+    let rangeX = domainX.upperBound.timeIntervalSince1970 - domainX.lowerBound.timeIntervalSince1970
+    let timeInterval = ((location.x / relX) * rangeX) + domainX.lowerBound.timeIntervalSince1970
     let selectData = Date(timeIntervalSince1970: TimeInterval(timeInterval))
-    
     findPoint(selectData, width: relX, height: relY)
   }
   

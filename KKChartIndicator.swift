@@ -26,10 +26,13 @@ public struct KKChartIndicator: KKChartModelPrototol {
   public var min: Double?
   public var max: Double?
   
+  var interpolationMethod: InterpolationMethod = .cardinal
+  
   var delegate: KKChartDelegate?
   
-  public init(fillChart: Bool) {
+  public init(fillChart: Bool, interpolationMethod: InterpolationMethod) {
     self.includeFillChart = fillChart
+    self.interpolationMethod = interpolationMethod
   }
   
   public var viewToRender: AnyView {
@@ -42,7 +45,7 @@ public struct KKChartIndicator: KKChartModelPrototol {
                      yStart: .value("value", point.y),
                      yEnd:  .value("value", min ?? 0))
             
-            .interpolationMethod(.cardinal)
+            .interpolationMethod(interpolationMethod)
             .foregroundStyle(
               LinearGradient(colors: [point.color.opacity(0.2), .clear],
                              startPoint: .top,
@@ -55,7 +58,7 @@ public struct KKChartIndicator: KKChartModelPrototol {
             LineMark(x: .value("time", point.x),
                      y: .value("Temperatura w buforze CWU", point.y))
             
-            .interpolationMethod(.cardinal)
+            .interpolationMethod(interpolationMethod)
             .lineStyle(.init(lineWidth: 1))
             .foregroundStyle(point.color)
             .foregroundStyle(by: .value("Seria", point.seria))
@@ -82,7 +85,7 @@ public struct KKChartIndicator: KKChartModelPrototol {
         
         .chartXScale(domain: domainX)
         .chartXAxis {
-          AxisMarks(values: .automatic) { _ in
+          AxisMarks(values: .automatic(desiredCount: 8)) { _ in
             AxisGridLine(centered: true, stroke: StrokeStyle(dash: [1, 2]))
               .foregroundStyle(config.gridX.colorGrid)
             AxisTick(stroke: StrokeStyle(lineWidth: 2))
@@ -109,9 +112,9 @@ extension KKChartIndicator: KKChartSearchProtocol {
 
 //MARK: Mock
 extension KKChartIndicator {
-  public static func mock(_ count: Int = 15, colorChart: Color = .blue, colorIdicator: Color = .blue) -> KKChartIndicator {
+  public static func mock(_ count: Int = 15, colorChart: Color = .blue, colorIdicator: Color = .blue, interpolationMethod: InterpolationMethod = .linear) -> KKChartIndicator {
     
-    var model = KKChartIndicator(fillChart: true)
+    var model = KKChartIndicator(fillChart: true, interpolationMethod: interpolationMethod)
     var points: [KKPointChart] = .init()
     let date: Date = .now
     
