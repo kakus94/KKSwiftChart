@@ -114,7 +114,7 @@ extension KKChartIndicator: KKChartSearchProtocol {
 extension KKChartIndicator {
   public static func mock(_ count: Int = 15, colorChart: Color = .blue, colorIdicator: Color = .blue, interpolationMethod: InterpolationMethod = .linear) -> KKChartIndicator {
     
-    var model = KKChartIndicator(fillChart: true, interpolationMethod: interpolationMethod)
+    var model = KKChartIndicator(fillChart: false, interpolationMethod: interpolationMethod)
     var points: [KKPointChart] = .init()
     let date: Date = .now
     
@@ -126,11 +126,17 @@ extension KKChartIndicator {
                           seria: "Seria2", color: .red))
     }
     
-//    for i in 0...count {      
-//      points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 3600)),
-//                          y: Double.random(in: 10...35),
-//                          seria: "Seria1", color: .green))
-//    }
+    for i in 0...count {      
+      points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 60)),
+                          y: Double.random(in: 10...35),
+                          seria: "Seria1", color: .green))
+    }
+    
+    for i in 0...count {
+      points.append(.init(x: date.addingTimeInterval(TimeInterval(i * 60)),
+                          y: Double.random(in: 10...35),
+                          seria: "Seria3", color: .mint))
+    }
     
     model.setValues(points)
     model.setConfig(config)

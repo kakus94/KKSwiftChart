@@ -15,12 +15,12 @@ extension KKChartIndicatorView: KKChartDelegate {
       return
     }
     
-    selectedDate =  result
+    selectedDate =  result.compactMap({ $0 })
     posX = result.compactMap{ $0?.posX }.reduce(0, +) / CGFloat(result.count)
     
-    if let first = result.first {
-      print(first.debugDescription)
-    }
+//    if let first = result.first {
+//      print(first.debugDescription)
+//    }
     
   }
   
@@ -38,7 +38,7 @@ extension KKChartIndicatorView: KKChartDelegate {
 public struct KKChartIndicatorView: View {
   
   @State var model: KKChartIndicator
-  @State var selectedDate: [KKChartPositionIndicator?] = []
+  @State var selectedDate: [KKChartPositionIndicator] = []
   
   @State private var posX: CGFloat? = nil
   
@@ -52,7 +52,7 @@ public struct KKChartIndicatorView: View {
         AnyView(chartView)
           .chartPlotStyle { plotContent in
             plotContent
-              .clipShape(Rectangle())
+//              .clipShape(Rectangle())
               .overlay(content: overlay)
           }
       } else {
@@ -78,29 +78,31 @@ public struct KKChartIndicatorView: View {
           .contentShape(Rectangle())
           .gesture(model.gesturePressDetect(geometry: geo))
           .overlay {
-            if let posX, let posYMax = selectedDate.compactMap({ $0?.posY }).max()  {
-              VStack(spacing: 0 ) {
-                Spacer()
-                HStack(spacing: 0 ) {                  
-                  Rectangle()
-                    .frame(width: 2, height: posYMax)
-  //                  .frame(maxHeight: .infinity)
-                  
-                    .overlay{
-                      VStack(spacing: 0) {
-                        Circle()
-                          .frame(width: 5, height: 5, alignment: .center)
-                          .offset(y: -2)
-                          
+            ForEach(selectedDate.indices, id: \.self) { index in
+              if let posX {
+                let posYMax = selectedDate[index].posY
+                ZStack {
+                  VStack(spacing: 0 ) {
+                    Spacer()
+                    HStack(spacing: 0 ) {
+                      Rectangle()
+                        .frame(width: 1, height: posYMax)
+                        .overlay {
+                          VStack(spacing: 0) {
+                            Circle()
+                              .frame(width: 5, height: 5, alignment: .center)
+                              .offset(y: -2)
+                              .foregroundStyle(selectedDate[index].result.color)
+                              .zIndex(100)
+                            Spacer()
+                          }
                         
-                        Spacer()
-                      }
+                        }
+                        .offset(x: posX, y: 0)
+                      
+                      Spacer()
                     }
-                    .offset(x: posX, y: -4)
-  //                  .padding(.bottom, ((posYs!.first ?? 0)!) / 2)
-                  
-                  
-                  Spacer()
+                  }
                 }
               }
             }

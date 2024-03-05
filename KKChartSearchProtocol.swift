@@ -39,14 +39,9 @@ extension KKChartSearchProtocol {
       
       for (key, _) in series  {
         
-        let x = valueSorted.last { poinChart in
-          if  poinChart.seria == key && poinChart.x < date {
-            return true
-          }
-          return false
-        }
+        let lastPoint = findCloseDate(date: date, value: valueSorted.filter({ $0.seria.contains(key)}))
         
-        if let x {
+        if let x = lastPoint {
           
           let posX = (x.x.timeIntervalSince1970 - domainX.lowerBound.timeIntervalSince1970) / (domainX.upperBound.timeIntervalSince1970 - domainX.lowerBound.timeIntervalSince1970) * width
           let posY = (x.y - domainY.lowerBound) / (domainY.upperBound - domainY.lowerBound) * height
@@ -58,6 +53,21 @@ extension KKChartSearchProtocol {
       delegate.setSelectedElement(result: result)
     }
     
+  }
+  
+  func findCloseDate(date: Date, value: [KKPointChart]) -> KKPointChart? {
+    var lastRange: Double = .nan
+    var lastPoint: KKPointChart?
+    
+    for point in value {
+      let thisRange = abs(date.timeIntervalSince1970 - point.x.timeIntervalSince1970)
+      if thisRange > lastRange {
+        break
+      }
+      lastRange = thisRange
+      lastPoint = point
+    }
+    return lastPoint
   }
   
   func find(location: CGPoint, geometry: GeometryProxy) {
@@ -105,7 +115,6 @@ extension KKChartSearchProtocol {
 
 public struct KKChartPositionIndicator: Equatable, Identifiable, CustomDebugStringConvertible {
   public var id = UUID().uuidString
-  
   
   public static func == (lhs: KKChartPositionIndicator, rhs: KKChartPositionIndicator) -> Bool {
     lhs.posX == rhs.posX || lhs.posY == rhs.posY || lhs.date == rhs.date
