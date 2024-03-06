@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-extension KKChartIndicatorView: KKChartDelegate {
+extension KKChartIndicatorView: KKChartSearchDelegate {
   func setSelectedElement(result: [KKChartPositionIndicator?]?) {
     guard let result, !result.isEmpty else {
       posX = nil
@@ -17,23 +17,8 @@ extension KKChartIndicatorView: KKChartDelegate {
     
     selectedDate =  result.compactMap({ $0 })
     posX = result.compactMap{ $0?.posX }.reduce(0, +) / CGFloat(result.count)
-    
-//    if let first = result.first {
-//      print(first.debugDescription)
-//    }
-    
   }
-  
-  func getSeries() -> Dictionary<String, Color> {
-    model.seria
-  }
-  
-  func getValues() -> [KKPointChart] {
-    model.values
-  }
-  
 }
-
 
 public struct KKChartIndicatorView: View {
   

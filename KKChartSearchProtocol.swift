@@ -10,20 +10,22 @@ import SwiftUI
 import Charts
 import KKHelper
 
-protocol KKChartDelegate {
+
+protocol KKChartSearchDelegate {
   func setSelectedElement(result: [KKChartPositionIndicator?]?)
-  func getValues() -> [KKPointChart]
-  func getSeries() -> Dictionary<String, Color>
 }
 
+
 protocol KKChartSearchProtocol {
-  
   var domainX: ClosedRange<Date>   { get set }
   var domainY: ClosedRange<Double> { get set }
-  var delegate: KKChartDelegate? { get set }
-  func resulutionY() -> Double
+  var delegate: KKChartSearchDelegate?   { get set }
+  var values: [KKPointChart] { get set }
+  var seria: Dictionary<String, Color> { get set }
+  
   func gesturePressDetect(geometry: GeometryProxy) -> _EndedGesture<_ChangedGesture<DragGesture>>
 }
+
 
 
 extension KKChartSearchProtocol {
@@ -31,13 +33,11 @@ extension KKChartSearchProtocol {
   func findPoint(_ date: Date?, width: CGFloat, height: CGFloat) {
     if let date, let delegate {
       
-      let valueSorted = delegate.getValues().sorted(by: { $0.x < $1.x })
-      
-      let series = delegate.getSeries()
+      let valueSorted = values.sorted(by: { $0.x < $1.x })
       
       var result: [KKChartPositionIndicator?] = []
       
-      for (key, _) in series  {
+      for (key, _) in seria  {
         
         let lastPoint = findCloseDate(date: date, value: valueSorted.filter({ $0.seria.contains(key)}))
         
@@ -78,11 +78,6 @@ extension KKChartSearchProtocol {
     findPoint(selectData, width: relX, height: relY)
   }
   
-  func resulutionY() -> Double {
-    let resY: Double = Double(domainY.lowerBound - domainY.upperBound)
-    return resY
-  }
-  
   func gesturePressDetect(geometry: GeometryProxy) -> _EndedGesture<_ChangedGesture<DragGesture>> {
     DragGesture(minimumDistance: 0)
       .onChanged { value in
@@ -92,7 +87,6 @@ extension KKChartSearchProtocol {
         delegate?.setSelectedElement(result: nil)
       }
   }
-  
   
   func getChartFrame(proxy: ChartProxy, geo: GeometryProxy) -> (Double, Double) {
     let chartWidth  = geo[proxy.plotFrame!].width
@@ -108,8 +102,6 @@ extension KKChartSearchProtocol {
 
   
 }
-
-
 
 
 

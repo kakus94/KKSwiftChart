@@ -21,6 +21,8 @@ public struct KKChartZooming: KKChartModelPrototol {
   public var config: KKChartConfig = .init()
   public var chartView: (any View)?
   
+//  var delegate: KKChartSearchDelegate?
+  
   public var min: Double?
   public var max: Double?
   
@@ -132,3 +134,4 @@ public struct KKChartZooming: KKChartModelPrototol {
 }
 
 
+//extension KKChartZooming: KKChartZoomingProtocol { }

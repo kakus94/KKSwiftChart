@@ -10,9 +10,9 @@ import SwiftUI
 import Charts
 
 //MARK: ChartModel
-public struct KKChartIndicator: KKChartModelPrototol {
-  public var includeFillChart: Bool
+public struct KKChartIndicator: KKChartModelPrototol, KKChartSearchProtocol {
   
+  public var includeFillChart: Bool
   public var seria: Dictionary<String, Color> = [:]
   
   public var domainY: ClosedRange<Double> = 0...10
@@ -28,7 +28,7 @@ public struct KKChartIndicator: KKChartModelPrototol {
   
   var interpolationMethod: InterpolationMethod = .cardinal
   
-  var delegate: KKChartDelegate?
+  var delegate: KKChartSearchDelegate?
   
   public init(fillChart: Bool, interpolationMethod: InterpolationMethod) {
     self.includeFillChart = fillChart
@@ -99,12 +99,6 @@ public struct KKChartIndicator: KKChartModelPrototol {
     )
     
   }
-  
-}
-
-
-
-extension KKChartIndicator: KKChartSearchProtocol {
   
 }
 

@@ -8,6 +8,19 @@
 import SwiftUI
 import Charts
 
+extension KKChartZoomingView: KKChartZoomingDelegate {
+  
+  func getValues() -> [KKPointChart] {
+    model.values
+  }
+  
+  func getSeries() -> Dictionary<String, Color> {
+    model.seria
+  }
+  
+  
+}
+
 public struct KKChartZoomingView: View {
   
   @State var model: KKChartZooming
@@ -38,6 +51,9 @@ public struct KKChartZoomingView: View {
       model.setDomainX()
       model.setDomainY(margin: 0.1)
       model.render()
+    }
+    .onAppear {
+//      model.delega
     }
   }
 }

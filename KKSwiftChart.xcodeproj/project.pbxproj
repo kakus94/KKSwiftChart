@@ -20,6 +20,7 @@
 		8E60A1F12B91FD6300900F18 /* KKChartSearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */; };
 		8EBDF3792B9706BE00B2A8E0 /* KKHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBDF3782B9706BE00B2A8E0 /* KKHelper.framework */; };
 		8EBDF37A2B9706BE00B2A8E0 /* KKHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBDF3782B9706BE00B2A8E0 /* KKHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8EBDF37D2B9731F800B2A8E0 /* KKChartZoomingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBDF37C2B9731F800B2A8E0 /* KKChartZoomingProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		8E60A1BB2B90791A00900F18 /* KKChartIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartIndicatorView.swift; sourceTree = "<group>"; };
 		8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartSearchProtocol.swift; sourceTree = "<group>"; };
 		8EBDF3782B9706BE00B2A8E0 /* KKHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KKHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EBDF37C2B9731F800B2A8E0 /* KKChartZoomingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartZoomingProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,9 +126,10 @@
 			isa = PBXGroup;
 			children = (
 				8E60A1AA2B90664900900F18 /* KKChartModelPrototol.swift */,
+				8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */,
+				8EBDF37C2B9731F800B2A8E0 /* KKChartZoomingProtocol.swift */,
 				8E60A1AE2B9066E900900F18 /* KKChartConfig.swift */,
 				8E60A1B12B9067CE00900F18 /* KKPointChart.swift */,
-				8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */,
 			);
 			name = Definition;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				8E60A1B22B9067CE00900F18 /* KKPointChart.swift in Sources */,
 				8E60A1B62B9068C200900F18 /* KKChartZooming.swift in Sources */,
 				8E60A1BA2B90790E00900F18 /* KKChartIndicator.swift in Sources */,
+				8EBDF37D2B9731F800B2A8E0 /* KKChartZoomingProtocol.swift in Sources */,
 				8E60A1F12B91FD6300900F18 /* KKChartSearchProtocol.swift in Sources */,
 				8E60A1AB2B90664900900F18 /* KKChartModelPrototol.swift in Sources */,
 			);

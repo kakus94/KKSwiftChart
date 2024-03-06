@@ -213,6 +213,8 @@ extension KKChartModelPrototol {
   
 }
 
+
+
 struct ChartConfig {
   
   var colorIndicator: Color = .blue
