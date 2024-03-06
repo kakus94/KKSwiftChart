@@ -126,8 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				8E60A1AA2B90664900900F18 /* KKChartModelPrototol.swift */,
-				8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */,
-				8EBDF37C2B9731F800B2A8E0 /* KKChartZoomingProtocol.swift */,
 				8E60A1AE2B9066E900900F18 /* KKChartConfig.swift */,
 				8E60A1B12B9067CE00900F18 /* KKPointChart.swift */,
 			);
@@ -137,6 +135,7 @@
 		8E60A1B32B90688300900F18 /* KKChartZooming */ = {
 			isa = PBXGroup;
 			children = (
+				8EBDF37C2B9731F800B2A8E0 /* KKChartZoomingProtocol.swift */,
 				8E60A1B52B9068C200900F18 /* KKChartZooming.swift */,
 				8E60A1B72B9068D000900F18 /* KKChartZoomingView.swift */,
 			);
@@ -146,6 +145,7 @@
 		8E60A1B42B90689500900F18 /* KKChartIndicator */ = {
 			isa = PBXGroup;
 			children = (
+				8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */,
 				8E60A1B92B90790E00900F18 /* KKChartIndicator.swift */,
 				8E60A1BB2B90791A00900F18 /* KKChartIndicatorView.swift */,
 			);

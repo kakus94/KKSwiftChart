@@ -16,7 +16,7 @@ protocol KKChartSearchDelegate {
 }
 
 
-protocol KKChartSearchProtocol {
+protocol KKChartSearchProtocol: KKChartModelPrototol {
   var domainX: ClosedRange<Date>   { get set }
   var domainY: ClosedRange<Double> { get set }
   var delegate: KKChartSearchDelegate?   { get set }

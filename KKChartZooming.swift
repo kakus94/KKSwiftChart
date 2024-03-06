@@ -10,7 +10,7 @@ import SwiftUI
 import Charts
 
 
-public struct KKChartZooming: KKChartModelPrototol {
+public struct KKChartZooming: KKChartZoomingProtocol {
   
   public var includeFillChart: Bool
   
@@ -21,7 +21,7 @@ public struct KKChartZooming: KKChartModelPrototol {
   public var config: KKChartConfig = .init()
   public var chartView: (any View)?
   
-//  var delegate: KKChartSearchDelegate?
+  var delegate: KKChartZoomingDelegate?
   
   public var min: Double?
   public var max: Double?
@@ -132,6 +132,3 @@ public struct KKChartZooming: KKChartModelPrototol {
     self.render()
   }
 }
-
-
-//extension KKChartZooming: KKChartZoomingProtocol { }

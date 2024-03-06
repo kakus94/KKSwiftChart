@@ -10,7 +10,7 @@ import SwiftUI
 import Charts
 
 //MARK: ChartModel
-public struct KKChartIndicator: KKChartModelPrototol, KKChartSearchProtocol {
+public struct KKChartIndicator: KKChartSearchProtocol {
   
   public var includeFillChart: Bool
   public var seria: Dictionary<String, Color> = [:]

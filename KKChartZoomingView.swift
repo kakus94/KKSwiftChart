@@ -9,13 +9,17 @@ import SwiftUI
 import Charts
 
 extension KKChartZoomingView: KKChartZoomingDelegate {
-  
-  func getValues() -> [KKPointChart] {
-    model.values
+  func reRender(_ startDate: Date, _ endDate: Date, _ maxValue: Double, _ minValue: Double) {
+    model.setDomainX(value1: startDate, value2: endDate)
+    model.setDomainY(value1: maxValue, value2: minValue, margin: 0.2)
+    Task {
+      await model.render()
+    }
   }
   
-  func getSeries() -> Dictionary<String, Color> {
-    model.seria
+  
+  func setValue(newZoomingModel: ZoomingModel) {
+    self.zoomingModel = newZoomingModel
   }
   
   
@@ -25,10 +29,7 @@ public struct KKChartZoomingView: View {
   
   @State var model: KKChartZooming
   
-  @State private var tapStart: CGPoint = .zero
-  @State private var transition: CGSize = .zero
-  @State private var revers: Bool = false
-  @State private var show: Bool = false
+  @State internal var zoomingModel: ZoomingModel = .init()
   
  public init(model: KKChartZooming) {
     self._model = State(wrappedValue: model)
@@ -48,12 +49,10 @@ public struct KKChartZoomingView: View {
       }
     }
     .task {
+      model.delegate = self
       model.setDomainX()
       model.setDomainY(margin: 0.1)
       model.render()
-    }
-    .onAppear {
-//      model.delega
     }
   }
 }
@@ -67,125 +66,17 @@ extension KKChartZoomingView {
         Rectangle()
           .fill(.clear)
           .contentShape(Rectangle())
-          .gesture(gesturePressDetect(geometry: geo))
+          .gesture(model.gesturePressDetect(geometry: geo))
           .overlay {
-            if show {
+            if zoomingModel.isActive {
               Rectangle()
-                .foregroundStyle(revers ? Color.red.opacity(0.2) : Color.green.opacity(0.2))
-                .frame(width: abs(transition.width), height: abs(transition.height))
-                .position(calculatePosition())
+                .foregroundStyle(zoomingModel.revers ? Color.red.opacity(0.2) : Color.green.opacity(0.2))
+                .frame(width: abs(zoomingModel.transition.width), height: abs(zoomingModel.transition.height))
+                .position(zoomingModel.calculatePosition())
             }
           }
       }
     }
-  }
-  
-  fileprivate func calculatePosition() -> CGPoint {
-    if revers {
-      return .init(x: tapStart.x + (transition.width / 2),
-                   y: tapStart.y + (transition.height / 2))
-    } else {
-      return .init(x: tapStart.x + (transition.width / 2),
-                   y: tapStart.y + (transition.height / 2))
-    }
-    
-  }
-  
-  fileprivate func gesturePressDetect(geometry: GeometryProxy) -> some Gesture {
-    DragGesture(minimumDistance: 0)
-      .onChanged { value in
-        self.tapStart = value.startLocation
-        self.transition = value.translation
-        self.revers = value.translation.width < 0
-        self.show = true
-        
-      }
-      .onEnded { _ in
-        calculate(geometry: geometry)
-        self.show = false
-      }
-  }
-    
-  fileprivate func calculate(geometry: GeometryProxy) {
-    
-    let (newMax,newMin) = getNewMaxMinValue(geometry: geometry)
-    
-    if let newMax, let newMin,
-       let startDate = find(location: tapStart, geometry: geometry),
-       let endDate   = find(location: .init(x: tapStart.x + transition.width, y: tapStart.y),
-                            geometry: geometry) {
-      
-      if !revers {
-        Task {
-          await model.reRender(startDate, endDate, newMax, newMin)
-        }
-      } else {
-        let rangeDate = startDate.timeIntervalSince1970 - endDate.timeIntervalSince1970
-        let halfRange = rangeDate
-        
-        let startDate2 = model.domainX.lowerBound.timeIntervalSince1970 - halfRange
-        let endDate2 = model.domainX.upperBound.timeIntervalSince1970 + halfRange
-        
-        Task {
-          await model.reRender(Date(timeIntervalSince1970: startDate2), Date(timeIntervalSince1970: endDate2), newMax, newMin)
-        }
-        
-      }
-    }
-  }
-    
-  fileprivate func find(location: CGPoint, geometry: GeometryProxy) -> Date? {
-    
-    let domain = model.domainX
-    let range = domain.upperBound.timeIntervalSince1970 - domain.lowerBound.timeIntervalSince1970
-    
-    let relativeXPosition = location.x
-    let resolution = geometry.size.width / range
-    
-    let dateAdded = (relativeXPosition / resolution)
-    
-    let dataResult = dateAdded + domain.lowerBound.timeIntervalSince1970
-    let dataSelected = Date(timeIntervalSince1970: dataResult)
-    
-    return dataSelected
-    
-  }
-  
-  fileprivate func getNewMaxMinValue(geometry: GeometryProxy) -> (CGFloat?, CGFloat?) {
-    
-    let min = model.getMin()
-    let max = model.getMax()
-    let resulutonY = max - min
-    
-    let tap = tapStart.y
-    let tap2 = tap + transition.height
-    
-    print("\nmin:\(min) max:\(max)")
-    
-    let height = geometry.size.height
-    let resolution = height / CGFloat(resulutonY)
-    
-    if !revers {
-      //Normal
-      let value1 = ((height - tap)  / resolution)
-      let value2 = ((height - tap2) / resolution)
-      
-      let result = [value1 ,value2]
-      return (result.max()! + min, result.min()! + min)
-      
-    } else {
-      //Reverse
-      let position = [tap,tap2]
-      let value = (position.max()! - position.min()!) / resolution
-      
-      let value1 = max + (value / 2 )
-      let value2 = min - (value / 2)
-      
-      let result = [value1 ,value2]
-      return (result.max()!, result.min()! )
-      
-    }
-    
   }
   
 }
