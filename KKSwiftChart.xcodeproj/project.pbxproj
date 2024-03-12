@@ -7,23 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E199B332B9F440100C6AC13 /* KKChartSearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E199B2A2B9F440000C6AC13 /* KKChartSearchProtocol.swift */; };
+		8E199B342B9F440100C6AC13 /* KKChartZoomingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E199B2B2B9F440100C6AC13 /* KKChartZoomingView.swift */; };
+		8E199B352B9F440100C6AC13 /* KKChartZooming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E199B2C2B9F440100C6AC13 /* KKChartZooming.swift */; };
+		8E199B362B9F440100C6AC13 /* KKChartIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E199B2D2B9F440100C6AC13 /* KKChartIndicatorView.swift */; };
+		8E199B372B9F440100C6AC13 /* KKChartModelPrototol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E199B2E2B9F440100C6AC13 /* KKChartModelPrototol.swift */; };
+		8E199B382B9F440100C6AC13 /* KKPointChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E199B2F2B9F440100C6AC13 /* KKPointChart.swift */; };
+		8E199B392B9F440100C6AC13 /* KKChartIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E199B302B9F440100C6AC13 /* KKChartIndicator.swift */; };
+		8E199B3A2B9F440100C6AC13 /* KKChartConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E199B312B9F440100C6AC13 /* KKChartConfig.swift */; };
+		8E199B3B2B9F440100C6AC13 /* KKChartZoomingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E199B322B9F440100C6AC13 /* KKChartZoomingProtocol.swift */; };
+		8E199B452B9F442C00C6AC13 /* KKHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E199B422B9F442700C6AC13 /* KKHelper.framework */; };
+		8E199B462B9F442C00C6AC13 /* KKHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8E199B422B9F442700C6AC13 /* KKHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8E60A1892B90629F00900F18 /* KKSwiftChart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E60A1802B90629E00900F18 /* KKSwiftChart.framework */; };
-		8E60A18E2B90629F00900F18 /* KKSwiftChartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A18D2B90629F00900F18 /* KKSwiftChartTests.swift */; };
-		8E60A18F2B90629F00900F18 /* KKSwiftChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E60A1832B90629E00900F18 /* KKSwiftChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8E60A1AB2B90664900900F18 /* KKChartModelPrototol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1AA2B90664900900F18 /* KKChartModelPrototol.swift */; };
-		8E60A1AF2B9066E900900F18 /* KKChartConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1AE2B9066E900900F18 /* KKChartConfig.swift */; };
-		8E60A1B22B9067CE00900F18 /* KKPointChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1B12B9067CE00900F18 /* KKPointChart.swift */; };
-		8E60A1B62B9068C200900F18 /* KKChartZooming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1B52B9068C200900F18 /* KKChartZooming.swift */; };
-		8E60A1B82B9068D000900F18 /* KKChartZoomingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1B72B9068D000900F18 /* KKChartZoomingView.swift */; };
-		8E60A1BA2B90790E00900F18 /* KKChartIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1B92B90790E00900F18 /* KKChartIndicator.swift */; };
-		8E60A1BC2B90791A00900F18 /* KKChartIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1BB2B90791A00900F18 /* KKChartIndicatorView.swift */; };
-		8E60A1F12B91FD6300900F18 /* KKChartSearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */; };
-		8EBDF3792B9706BE00B2A8E0 /* KKHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBDF3782B9706BE00B2A8E0 /* KKHelper.framework */; };
-		8EBDF37A2B9706BE00B2A8E0 /* KKHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8EBDF3782B9706BE00B2A8E0 /* KKHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8EBDF37D2B9731F800B2A8E0 /* KKChartZoomingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBDF37C2B9731F800B2A8E0 /* KKChartZoomingProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8E199B412B9F442700C6AC13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E199B3C2B9F442700C6AC13 /* KKHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8EBDF3472B97052100B2A8E0;
+			remoteInfo = KKHelper;
+		};
+		8E199B432B9F442700C6AC13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E199B3C2B9F442700C6AC13 /* KKHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8EBDF34F2B97052200B2A8E0;
+			remoteInfo = KKHelperTests;
+		};
 		8E60A18A2B90629F00900F18 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8E60A1772B90629E00900F18 /* Project object */;
@@ -40,7 +52,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8EBDF37A2B9706BE00B2A8E0 /* KKHelper.framework in Embed Frameworks */,
+				8E199B462B9F442C00C6AC13 /* KKHelper.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,20 +60,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8E199B2A2B9F440000C6AC13 /* KKChartSearchProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KKChartSearchProtocol.swift; path = Sources/KKChartSearchProtocol.swift; sourceTree = "<group>"; };
+		8E199B2B2B9F440100C6AC13 /* KKChartZoomingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KKChartZoomingView.swift; path = Sources/KKChartZoomingView.swift; sourceTree = "<group>"; };
+		8E199B2C2B9F440100C6AC13 /* KKChartZooming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KKChartZooming.swift; path = Sources/KKChartZooming.swift; sourceTree = "<group>"; };
+		8E199B2D2B9F440100C6AC13 /* KKChartIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KKChartIndicatorView.swift; path = Sources/KKChartIndicatorView.swift; sourceTree = "<group>"; };
+		8E199B2E2B9F440100C6AC13 /* KKChartModelPrototol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KKChartModelPrototol.swift; path = Sources/KKChartModelPrototol.swift; sourceTree = "<group>"; };
+		8E199B2F2B9F440100C6AC13 /* KKPointChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KKPointChart.swift; path = Sources/KKPointChart.swift; sourceTree = "<group>"; };
+		8E199B302B9F440100C6AC13 /* KKChartIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KKChartIndicator.swift; path = Sources/KKChartIndicator.swift; sourceTree = "<group>"; };
+		8E199B312B9F440100C6AC13 /* KKChartConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KKChartConfig.swift; path = Sources/KKChartConfig.swift; sourceTree = "<group>"; };
+		8E199B322B9F440100C6AC13 /* KKChartZoomingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KKChartZoomingProtocol.swift; path = Sources/KKChartZoomingProtocol.swift; sourceTree = "<group>"; };
+		8E199B3C2B9F442700C6AC13 /* KKHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KKHelper.xcodeproj; path = ../KKHelper/KKHelper.xcodeproj; sourceTree = "<group>"; };
 		8E60A1802B90629E00900F18 /* KKSwiftChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KKSwiftChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E60A1832B90629E00900F18 /* KKSwiftChart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKSwiftChart.h; sourceTree = "<group>"; };
 		8E60A1882B90629E00900F18 /* KKSwiftChartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KKSwiftChartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E60A18D2B90629F00900F18 /* KKSwiftChartTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSwiftChartTests.swift; sourceTree = "<group>"; };
-		8E60A1AA2B90664900900F18 /* KKChartModelPrototol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartModelPrototol.swift; sourceTree = "<group>"; };
-		8E60A1AE2B9066E900900F18 /* KKChartConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartConfig.swift; sourceTree = "<group>"; };
-		8E60A1B12B9067CE00900F18 /* KKPointChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPointChart.swift; sourceTree = "<group>"; };
-		8E60A1B52B9068C200900F18 /* KKChartZooming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartZooming.swift; sourceTree = "<group>"; };
-		8E60A1B72B9068D000900F18 /* KKChartZoomingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartZoomingView.swift; sourceTree = "<group>"; };
-		8E60A1B92B90790E00900F18 /* KKChartIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartIndicator.swift; sourceTree = "<group>"; };
-		8E60A1BB2B90791A00900F18 /* KKChartIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartIndicatorView.swift; sourceTree = "<group>"; };
-		8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartSearchProtocol.swift; sourceTree = "<group>"; };
-		8EBDF3782B9706BE00B2A8E0 /* KKHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KKHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8EBDF37C2B9731F800B2A8E0 /* KKChartZoomingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKChartZoomingProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EBDF3792B9706BE00B2A8E0 /* KKHelper.framework in Frameworks */,
+				8E199B452B9F442C00C6AC13 /* KKHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,14 +94,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E199B3D2B9F442700C6AC13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E199B422B9F442700C6AC13 /* KKHelper.framework */,
+				8E199B442B9F442700C6AC13 /* KKHelperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8E60A1762B90629E00900F18 = {
 			isa = PBXGroup;
 			children = (
-				8E60A1B02B90676000900F18 /* Definition */,
-				8E60A1B42B90689500900F18 /* KKChartIndicator */,
-				8E60A1B32B90688300900F18 /* KKChartZooming */,
-				8E60A1822B90629E00900F18 /* KKSwiftChart */,
-				8E60A18C2B90629F00900F18 /* KKSwiftChartTests */,
+				8E199B312B9F440100C6AC13 /* KKChartConfig.swift */,
+				8E199B302B9F440100C6AC13 /* KKChartIndicator.swift */,
+				8E199B2D2B9F440100C6AC13 /* KKChartIndicatorView.swift */,
+				8E199B2E2B9F440100C6AC13 /* KKChartModelPrototol.swift */,
+				8E199B2A2B9F440000C6AC13 /* KKChartSearchProtocol.swift */,
+				8E199B2C2B9F440100C6AC13 /* KKChartZooming.swift */,
+				8E199B322B9F440100C6AC13 /* KKChartZoomingProtocol.swift */,
+				8E199B2B2B9F440100C6AC13 /* KKChartZoomingView.swift */,
+				8E199B2F2B9F440100C6AC13 /* KKPointChart.swift */,
 				8E60A1812B90629E00900F18 /* Products */,
 				8EBDF3772B9706BE00B2A8E0 /* Frameworks */,
 			);
@@ -106,56 +129,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8E60A1822B90629E00900F18 /* KKSwiftChart */ = {
-			isa = PBXGroup;
-			children = (
-				8E60A1832B90629E00900F18 /* KKSwiftChart.h */,
-			);
-			path = KKSwiftChart;
-			sourceTree = "<group>";
-		};
-		8E60A18C2B90629F00900F18 /* KKSwiftChartTests */ = {
-			isa = PBXGroup;
-			children = (
-				8E60A18D2B90629F00900F18 /* KKSwiftChartTests.swift */,
-			);
-			path = KKSwiftChartTests;
-			sourceTree = "<group>";
-		};
-		8E60A1B02B90676000900F18 /* Definition */ = {
-			isa = PBXGroup;
-			children = (
-				8E60A1AA2B90664900900F18 /* KKChartModelPrototol.swift */,
-				8E60A1AE2B9066E900900F18 /* KKChartConfig.swift */,
-				8E60A1B12B9067CE00900F18 /* KKPointChart.swift */,
-			);
-			name = Definition;
-			sourceTree = "<group>";
-		};
-		8E60A1B32B90688300900F18 /* KKChartZooming */ = {
-			isa = PBXGroup;
-			children = (
-				8EBDF37C2B9731F800B2A8E0 /* KKChartZoomingProtocol.swift */,
-				8E60A1B52B9068C200900F18 /* KKChartZooming.swift */,
-				8E60A1B72B9068D000900F18 /* KKChartZoomingView.swift */,
-			);
-			name = KKChartZooming;
-			sourceTree = "<group>";
-		};
-		8E60A1B42B90689500900F18 /* KKChartIndicator */ = {
-			isa = PBXGroup;
-			children = (
-				8E60A1F02B91FD6300900F18 /* KKChartSearchProtocol.swift */,
-				8E60A1B92B90790E00900F18 /* KKChartIndicator.swift */,
-				8E60A1BB2B90791A00900F18 /* KKChartIndicatorView.swift */,
-			);
-			name = KKChartIndicator;
-			sourceTree = "<group>";
-		};
 		8EBDF3772B9706BE00B2A8E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8EBDF3782B9706BE00B2A8E0 /* KKHelper.framework */,
+				8E199B3C2B9F442700C6AC13 /* KKHelper.xcodeproj */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -167,7 +144,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E60A18F2B90629F00900F18 /* KKSwiftChart.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,7 +199,7 @@
 				TargetAttributes = {
 					8E60A17F2B90629E00900F18 = {
 						CreatedOnToolsVersion = 15.2;
-						LastSwiftMigration = 1520;
+						LastSwiftMigration = 1530;
 					};
 					8E60A1872B90629E00900F18 = {
 						CreatedOnToolsVersion = 15.2;
@@ -241,6 +217,12 @@
 			mainGroup = 8E60A1762B90629E00900F18;
 			productRefGroup = 8E60A1812B90629E00900F18 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8E199B3D2B9F442700C6AC13 /* Products */;
+					ProjectRef = 8E199B3C2B9F442700C6AC13 /* KKHelper.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8E60A17F2B90629E00900F18 /* KKSwiftChart */,
@@ -248,6 +230,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8E199B422B9F442700C6AC13 /* KKHelper.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = KKHelper.framework;
+			remoteRef = 8E199B412B9F442700C6AC13 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8E199B442B9F442700C6AC13 /* KKHelperTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = KKHelperTests.xctest;
+			remoteRef = 8E199B432B9F442700C6AC13 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8E60A17E2B90629E00900F18 /* Resources */ = {
@@ -271,15 +270,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E60A1AF2B9066E900900F18 /* KKChartConfig.swift in Sources */,
-				8E60A1B82B9068D000900F18 /* KKChartZoomingView.swift in Sources */,
-				8E60A1BC2B90791A00900F18 /* KKChartIndicatorView.swift in Sources */,
-				8E60A1B22B9067CE00900F18 /* KKPointChart.swift in Sources */,
-				8E60A1B62B9068C200900F18 /* KKChartZooming.swift in Sources */,
-				8E60A1BA2B90790E00900F18 /* KKChartIndicator.swift in Sources */,
-				8EBDF37D2B9731F800B2A8E0 /* KKChartZoomingProtocol.swift in Sources */,
-				8E60A1F12B91FD6300900F18 /* KKChartSearchProtocol.swift in Sources */,
-				8E60A1AB2B90664900900F18 /* KKChartModelPrototol.swift in Sources */,
+				8E199B332B9F440100C6AC13 /* KKChartSearchProtocol.swift in Sources */,
+				8E199B382B9F440100C6AC13 /* KKPointChart.swift in Sources */,
+				8E199B372B9F440100C6AC13 /* KKChartModelPrototol.swift in Sources */,
+				8E199B392B9F440100C6AC13 /* KKChartIndicator.swift in Sources */,
+				8E199B3A2B9F440100C6AC13 /* KKChartConfig.swift in Sources */,
+				8E199B362B9F440100C6AC13 /* KKChartIndicatorView.swift in Sources */,
+				8E199B3B2B9F440100C6AC13 /* KKChartZoomingProtocol.swift in Sources */,
+				8E199B352B9F440100C6AC13 /* KKChartZooming.swift in Sources */,
+				8E199B342B9F440100C6AC13 /* KKChartZoomingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +286,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E60A18E2B90629F00900F18 /* KKSwiftChartTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
